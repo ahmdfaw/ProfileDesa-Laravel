@@ -25,11 +25,12 @@
                         <a href="{{ route('admin.news.index') }}" class="block px-4 py-2 hover:bg-gray-700">Berita</a>
                         <a href="{{ route('admin.officials.index') }}"
                             class="block px-4 py-2 hover:bg-gray-700">Pemerintahan</a>
-                        <a href="{{ route('admin.services.index') }}" class="block px-4 py-2 hover:bg-gray-700">Layanan</a>
+                        <a href="{{ route('admin.services.index') }}" class="block px-4 py-2 hover:bg-gray-700">Program
+                            Kegiatan</a>
                         <a href="{{ route('admin.galleries.index') }}" class="block px-4 py-2 hover:bg-gray-700">Galeri</a>
                         <a href="{{ route('admin.contacts.index') }}" class="block px-4 py-2 hover:bg-gray-700">Pesan</a>
                         <a href="{{ route('admin.profile.edit') }}" class="block px-4 py-2 hover:bg-gray-700">Profil
-                            Desa</a>
+                            Dusun</a>
                         <form method="POST" action="{{ route('admin.logout') }}" class="px-4 py-2">
                             @csrf
                             <button type="submit" class="w-full text-left hover:text-red-400">Logout</button>

@@ -21,8 +21,8 @@ Route::get('/profil', [ProfileController::class, 'index'])->name('profile');
 Route::get('/berita', [NewsController::class, 'index'])->name('news.index');
 Route::get('/berita/{slug}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/galeri', [GalleryController::class, 'index'])->name('gallery.index');
-Route::get('/layanan', [ServiceController::class, 'index'])->name('services.index');
-Route::get('/layanan/{id}', [ServiceController::class, 'show'])->name('services.show');
+Route::get('/program', [ServiceController::class, 'index'])->name('programs.index');
+Route::get('/program/{id}', [ServiceController::class, 'show'])->name('programs.show');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/kontak', [ContactController::class, 'store'])->name('contact.store');
 

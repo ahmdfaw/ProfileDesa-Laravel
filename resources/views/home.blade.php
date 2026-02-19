@@ -6,8 +6,8 @@
     <!-- Hero Section -->
     <div class="bg-blue-600 text-white py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl font-bold mb-4">Selamat Datang di {{ $profile->name ?? 'Website Desa' }}</h1>
-            <p class="text-xl">{{ $profile->vision ?? 'Mewujudkan desa yang maju dan sejahtera' }}</p>
+            <h1 class="text-4xl font-bold mb-4">Selamat Datang di {{ $profile->name ?? 'Website Dusun' }}</h1>
+            <p class="text-xl">{{ $profile->vision ?? 'Mewujudkan dusun yang maju dan sejahtera' }}</p>
         </div>
     </div>
 
@@ -51,15 +51,15 @@
         <div class="bg-gray-100 py-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-3xl font-bold text-gray-900">Layanan Desa</h2>
-                    <a href="{{ route('services.index') }}" class="text-blue-600 hover:text-blue-800">Lihat Semua</a>
+                    <h2 class="text-3xl font-bold text-gray-900">Program Kegiatan</h2>
+                    <a href="{{ route('programs.index') }}" class="text-blue-600 hover:text-blue-800">Lihat Semua</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     @foreach ($services as $service)
                         <div class="bg-white p-6 rounded-lg shadow-md">
                             <h3 class="text-xl font-semibold mb-2">{{ $service->name }}</h3>
                             <p class="text-gray-600 mb-4">{{ Str::limit($service->description, 100) }}</p>
-                            <a href="{{ route('services.show', $service->id) }}"
+                            <a href="{{ route('programs.show', $service->id) }}"
                                 class="text-blue-600 hover:text-blue-800">Selengkapnya →</a>
                         </div>
                     @endforeach

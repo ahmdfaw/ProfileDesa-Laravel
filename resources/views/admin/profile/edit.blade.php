@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit Profil Desa')
+@section('title', 'Edit Profil Dusun')
 
 @section('content')
     <div class="mb-6">
-        <h1 class="text-2xl font-bold text-gray-900">Edit Profil Desa</h1>
-        <p class="text-gray-600">Kelola informasi profil desa</p>
+        <h1 class="text-2xl font-bold text-gray-900">Edit Profil Dusun</h1>
+        <p class="text-gray-600">Kelola informasi profil dusun</p>
     </div>
 
     @if (session('success'))
@@ -23,7 +23,7 @@
                 <h2 class="mb-4 text-lg font-semibold text-gray-900">Informasi Dasar</h2>
 
                 <div class="mb-4">
-                    <label for="name" class="mb-2 block text-sm font-medium text-gray-700">Nama Desa <span
+                    <label for="name" class="mb-2 block text-sm font-medium text-gray-700">Nama Dusun <span
                             class="text-red-500">*</span></label>
                     <input type="text" name="name" id="name" value="{{ old('name', $profile->name) }}"
                         class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('name') border-red-500 @enderror"
@@ -34,10 +34,10 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="logo" class="mb-2 block text-sm font-medium text-gray-700">Logo Desa</label>
+                    <label for="logo" class="mb-2 block text-sm font-medium text-gray-700">Logo Dusun</label>
                     @if ($profile->logo)
                         <div class="mb-2">
-                            <img src="{{ asset('storage/' . $profile->logo) }}" alt="Logo Desa"
+                            <img src="{{ asset('storage/' . $profile->logo) }}" alt="Logo Dusun"
                                 class="h-24 w-24 object-contain">
                         </div>
                     @endif
@@ -50,11 +50,11 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="village_head" class="mb-2 block text-sm font-medium text-gray-700">Kepala Desa</label>
-                    <input type="text" name="village_head" id="village_head"
-                        value="{{ old('village_head', $profile->village_head) }}"
-                        class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('village_head') border-red-500 @enderror">
-                    @error('village_head')
+                    <label for="hamlet_head" class="mb-2 block text-sm font-medium text-gray-700">Kepala Dusun</label>
+                    <input type="text" name="hamlet_head" id="hamlet_head"
+                        value="{{ old('hamlet_head', $profile->hamlet_head) }}"
+                        class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('hamlet_head') border-red-500 @enderror">
+                    @error('hamlet_head')
                         <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                     @enderror
                 </div>
@@ -64,7 +64,7 @@
                 <h2 class="mb-4 text-lg font-semibold text-gray-900">Sejarah dan Visi Misi</h2>
 
                 <div class="mb-4">
-                    <label for="history" class="mb-2 block text-sm font-medium text-gray-700">Sejarah Desa</label>
+                    <label for="history" class="mb-2 block text-sm font-medium text-gray-700">Sejarah Dusun</label>
                     <textarea name="history" id="history" rows="5"
                         class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('history') border-red-500 @enderror">{{ old('history', $profile->history) }}</textarea>
                     @error('history')
@@ -126,11 +126,21 @@
                     </div>
 
                     <div>
-                        <label for="districts" class="mb-2 block text-sm font-medium text-gray-700">Jumlah Dusun</label>
-                        <input type="number" name="districts" id="districts"
-                            value="{{ old('districts', $profile->districts) }}" min="0"
-                            class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('districts') border-red-500 @enderror">
-                        @error('districts')
+                        <label for="total_rw" class="mb-2 block text-sm font-medium text-gray-700">Jumlah RW</label>
+                        <input type="number" name="total_rw" id="total_rw"
+                            value="{{ old('total_rw', $profile->total_rw) }}" min="0"
+                            class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('total_rw') border-red-500 @enderror">
+                        @error('total_rw')
+                            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="total_rt" class="mb-2 block text-sm font-medium text-gray-700">Jumlah RT</label>
+                        <input type="number" name="total_rt" id="total_rt"
+                            value="{{ old('total_rt', $profile->total_rt) }}" min="0"
+                            class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('total_rt') border-red-500 @enderror">
+                        @error('total_rt')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
                     </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Website Desa')</title>
+    <title>@yield('title', 'Website Dusun')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -36,9 +36,9 @@
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Galeri
                         </a>
-                        <a href="{{ route('services.index') }}"
+                        <a href="{{ route('programs.index') }}"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                            Layanan
+                            Program Kegiatan
                         </a>
                         <a href="{{ route('contact.index') }}"
                             class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
@@ -61,7 +61,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-lg font-bold mb-4">{{ config('app.name') }}</h3>
-                    <p class="text-gray-400">Website resmi pemerintah desa</p>
+                    <p class="text-gray-400">Website resmi pemerintah dusun</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">Link Cepat</h3>

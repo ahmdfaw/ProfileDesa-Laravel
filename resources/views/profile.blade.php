@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Profil Desa')
+@section('title', 'Profil Dusun')
 
 @section('content')
     <!-- Hero Section -->
     <div class="bg-blue-600 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold">Profil {{ $profile->name ?? 'Desa' }}</h1>
+            <h1 class="text-4xl font-bold">Profil {{ $profile->name ?? 'Dusun' }}</h1>
         </div>
     </div>
 
@@ -18,7 +18,7 @@
                 <!-- Sejarah -->
                 @if ($profile && $profile->history)
                     <div class="bg-white rounded-lg shadow-md p-6">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Sejarah Desa</h2>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Sejarah Dusun</h2>
                         <p class="text-gray-700 leading-relaxed">{{ $profile->history }}</p>
                     </div>
                 @endif
@@ -53,7 +53,7 @@
                 <!-- Info Desa -->
                 @if ($profile)
                     <div class="bg-white rounded-lg shadow-md p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Informasi Desa</h3>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Informasi Dusun</h3>
                         <div class="space-y-3">
                             @if ($profile->area)
                                 <div>
@@ -67,16 +67,22 @@
                                     <p class="font-semibold">{{ number_format($profile->population) }} jiwa</p>
                                 </div>
                             @endif
-                            @if ($profile->districts)
+                            @if ($profile->total_rw)
                                 <div>
-                                    <p class="text-sm text-gray-500">Jumlah Dusun</p>
-                                    <p class="font-semibold">{{ $profile->districts }} dusun</p>
+                                    <p class="text-sm text-gray-500">Jumlah RW</p>
+                                    <p class="font-semibold">{{ $profile->total_rw }} RW</p>
                                 </div>
                             @endif
-                            @if ($profile->village_head)
+                            @if ($profile->total_rt)
                                 <div>
-                                    <p class="text-sm text-gray-500">Kepala Desa</p>
-                                    <p class="font-semibold">{{ $profile->village_head }}</p>
+                                    <p class="text-sm text-gray-500">Jumlah RT</p>
+                                    <p class="font-semibold">{{ $profile->total_rt }} RT</p>
+                                </div>
+                            @endif
+                            @if ($profile->hamlet_head)
+                                <div>
+                                    <p class="text-sm text-gray-500">Kepala Dusun</p>
+                                    <p class="font-semibold">{{ $profile->hamlet_head }}</p>
                                 </div>
                             @endif
                         </div>
@@ -129,38 +135,121 @@
         <!-- Struktur Organisasi -->
         @if ($officials->count() > 0)
             <div class="mt-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6">Struktur Pemerintahan Desa</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    @foreach ($officials as $official)
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                            @if ($official->photo)
-                                <img src="{{ asset('storage/' . $official->photo) }}" alt="{{ $official->name }}"
-                                    class="w-full h-48 object-cover">
-                            @else
-                                <div class="w-full h-48 bg-gray-300 flex items-center justify-center">
-                                    <svg class="w-20 h-20 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            @endif
-                            <div class="p-4 text-center">
-                                <h3 class="font-bold text-lg text-gray-900">{{ $official->name }}</h3>
-                                <p class="text-gray-600">{{ $official->position }}</p>
-                                @if ($official->phone || $official->email)
-                                    <div class="mt-3 text-sm text-gray-500">
-                                        @if ($official->phone)
-                                            <p>{{ $official->phone }}</p>
-                                        @endif
-                                        @if ($official->email)
-                                            <p>{{ $official->email }}</p>
-                                        @endif
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Struktur Pemerintahan Dusun</h2>
+
+                @php $grouped = $officials->groupBy('type'); @endphp
+
+                {{-- Kepala Dusun --}}
+                @if ($grouped->has('kadus'))
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Kepala Dusun</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        @foreach ($grouped['kadus'] as $official)
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                @if ($official->photo)
+                                    <img src="{{ asset('storage/' . $official->photo) }}" alt="{{ $official->name }}"
+                                        class="w-full h-48 object-cover">
+                                @else
+                                    <div class="w-full h-48 bg-gray-300 flex items-center justify-center">
+                                        <svg class="w-20 h-20 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                clip-rule="evenodd" />
+                                        </svg>
                                     </div>
                                 @endif
+                                <div class="p-4 text-center">
+                                    <h3 class="font-bold text-lg text-gray-900">{{ $official->name }}</h3>
+                                    <p class="text-gray-600">{{ $official->position }}</p>
+                                    @if ($official->phone || $official->email)
+                                        <div class="mt-3 text-sm text-gray-500">
+                                            @if ($official->phone)
+                                                <p>{{ $official->phone }}</p>
+                                            @endif
+                                            @if ($official->email)
+                                                <p>{{ $official->email }}</p>
+                                            @endif
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        @endforeach
+                    </div>
+                @endif
+
+                {{-- RW --}}
+                @if ($grouped->has('rw'))
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Rukun Warga (RW)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        @foreach ($grouped['rw'] as $official)
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                @if ($official->photo)
+                                    <img src="{{ asset('storage/' . $official->photo) }}" alt="{{ $official->name }}"
+                                        class="w-full h-48 object-cover">
+                                @else
+                                    <div class="w-full h-48 bg-gray-300 flex items-center justify-center">
+                                        <svg class="w-20 h-20 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                @endif
+                                <div class="p-4 text-center">
+                                    <h3 class="font-bold text-lg text-gray-900">{{ $official->name }}</h3>
+                                    <p class="text-gray-600">{{ $official->position }}</p>
+                                    @if ($official->phone || $official->email)
+                                        <div class="mt-3 text-sm text-gray-500">
+                                            @if ($official->phone)
+                                                <p>{{ $official->phone }}</p>
+                                            @endif
+                                            @if ($official->email)
+                                                <p>{{ $official->email }}</p>
+                                            @endif
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
+                {{-- RT --}}
+                @if ($grouped->has('rt'))
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Rukun Tetangga (RT)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        @foreach ($grouped['rt'] as $official)
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                @if ($official->photo)
+                                    <img src="{{ asset('storage/' . $official->photo) }}" alt="{{ $official->name }}"
+                                        class="w-full h-48 object-cover">
+                                @else
+                                    <div class="w-full h-48 bg-gray-300 flex items-center justify-center">
+                                        <svg class="w-20 h-20 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                @endif
+                                <div class="p-4 text-center">
+                                    <h3 class="font-bold text-lg text-gray-900">{{ $official->name }}</h3>
+                                    <p class="text-gray-600">{{ $official->position }}</p>
+                                    @if ($official->phone || $official->email)
+                                        <div class="mt-3 text-sm text-gray-500">
+                                            @if ($official->phone)
+                                                <p>{{ $official->phone }}</p>
+                                            @endif
+                                            @if ($official->email)
+                                                <p>{{ $official->email }}</p>
+                                            @endif
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
             </div>
         @endif
     </div>

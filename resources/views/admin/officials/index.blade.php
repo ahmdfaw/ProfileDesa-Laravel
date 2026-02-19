@@ -23,6 +23,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Foto</th>
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Nama</th>
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Jabatan</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Kategori</th>
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Kontak</th>
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Urutan</th>
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Aksi</th>
@@ -50,6 +51,13 @@
                         </td>
                         <td class="whitespace-nowrap px-6 py-4">
                             <div class="text-sm text-gray-500">{{ $official->position }}</div>
+                        </td>
+                        <td class="whitespace-nowrap px-6 py-4">
+                            <span
+                                class="inline-flex rounded-full px-2 text-xs font-semibold leading-5
+                                {{ $official->type === 'kadus' ? 'bg-blue-100 text-blue-800' : ($official->type === 'rw' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800') }}">
+                                {{ strtoupper($official->type) }}
+                            </span>
                         </td>
                         <td class="px-6 py-4">
                             <div class="text-sm text-gray-500">
@@ -79,7 +87,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">
+                        <td colspan="7" class="px-6 py-4 text-center text-sm text-gray-500">
                             Belum ada data pemerintahan.
                         </td>
                     </tr>

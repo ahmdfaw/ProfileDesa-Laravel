@@ -35,6 +35,24 @@
             </div>
 
             <div class="mb-4">
+                <label for="type" class="mb-2 block text-sm font-medium text-gray-700">Kategori <span
+                        class="text-red-500">*</span></label>
+                <select name="type" id="type"
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('type') border-red-500 @enderror"
+                    required>
+                    <option value="kadus" {{ old('type', $official->type) === 'kadus' ? 'selected' : '' }}>Kepala Dusun
+                        (Kadus)</option>
+                    <option value="rw" {{ old('type', $official->type) === 'rw' ? 'selected' : '' }}>Rukun Warga (RW)
+                    </option>
+                    <option value="rt" {{ old('type', $official->type) === 'rt' ? 'selected' : '' }}>Rukun Tetangga (RT)
+                    </option>
+                </select>
+                @error('type')
+                    <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-4">
                 <label for="photo" class="mb-2 block text-sm font-medium text-gray-700">Foto</label>
                 @if ($official->photo)
                     <div class="mb-2">

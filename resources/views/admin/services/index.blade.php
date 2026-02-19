@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 
-@section('title', 'Kelola Layanan')
+@section('title', 'Kelola Program Kegiatan')
 
 @section('content')
     <div class="mb-6 flex items-center justify-between">
-        <h1 class="text-2xl font-bold text-gray-900">Kelola Layanan</h1>
+        <h1 class="text-2xl font-bold text-gray-900">Kelola Program Kegiatan</h1>
         <a href="{{ route('admin.services.create') }}" class="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
-            Tambah Layanan Baru
+            Tambah Program Baru
         </a>
     </div>
 
@@ -22,9 +22,10 @@
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Icon</th>
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Nama</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Waktu Proses
+                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Jadwal
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Biaya</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                        Penanggungjawab</th>
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Urutan</th>
                     <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Aksi</th>
                 </tr>
@@ -64,7 +65,7 @@
                                 <a href="{{ route('admin.services.edit', $service->id) }}"
                                     class="text-blue-600 hover:text-blue-900">Edit</a>
                                 <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST"
-                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus layanan ini?')">
+                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus program ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:text-red-900">Hapus</button>
@@ -75,7 +76,7 @@
                 @empty
                     <tr>
                         <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">
-                            Belum ada data layanan.
+                            Belum ada data program kegiatan.
                         </td>
                     </tr>
                 @endforelse

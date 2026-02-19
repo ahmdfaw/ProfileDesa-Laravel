@@ -13,10 +13,15 @@ class OfficialSeeder extends Seeder
     public function run(): void
     {
         $officials = [
-            ['name' => 'Bapak Kepala Desa', 'position' => 'Kepala Desa', 'order' => 1],
-            ['name' => 'Ibu Sekretaris Desa', 'position' => 'Sekretaris Desa', 'order' => 2],
-            ['name' => 'Bapak Kaur Pemerintahan', 'position' => 'Kaur Pemerintahan', 'order' => 3],
-            ['name' => 'Ibu Kaur Keuangan', 'position' => 'Kaur Keuangan', 'order' => 4],
+            ['name' => 'Bapak Kepala Dusun', 'position' => 'Kepala Dusun (Kadus)', 'type' => 'kadus', 'order' => 1],
+            ['name' => 'Bapak Ketua RW 01', 'position' => 'Ketua RW 01', 'type' => 'rw', 'order' => 2],
+            ['name' => 'Bapak Ketua RW 02', 'position' => 'Ketua RW 02', 'type' => 'rw', 'order' => 3],
+            ['name' => 'Bapak Ketua RT 01', 'position' => 'Ketua RT 01/RW 01', 'type' => 'rt', 'order' => 4],
+            ['name' => 'Ibu Ketua RT 02', 'position' => 'Ketua RT 02/RW 01', 'type' => 'rt', 'order' => 5],
+            ['name' => 'Bapak Ketua RT 03', 'position' => 'Ketua RT 03/RW 01', 'type' => 'rt', 'order' => 6],
+            ['name' => 'Bapak Ketua RT 04', 'position' => 'Ketua RT 04/RW 02', 'type' => 'rt', 'order' => 7],
+            ['name' => 'Ibu Ketua RT 05', 'position' => 'Ketua RT 05/RW 02', 'type' => 'rt', 'order' => 8],
+            ['name' => 'Bapak Ketua RT 06', 'position' => 'Ketua RT 06/RW 02', 'type' => 'rt', 'order' => 9],
         ];
 
         foreach ($officials as $official) {

@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit Layanan')
+@section('title', 'Edit Program')
 
 @section('content')
     <div class="mb-6">
-        <h1 class="text-2xl font-bold text-gray-900">Edit Layanan</h1>
+        <h1 class="text-2xl font-bold text-gray-900">Edit Program Kegiatan</h1>
     </div>
 
     <div class="rounded-lg bg-white p-6 shadow">
@@ -13,7 +13,7 @@
             @method('PUT')
 
             <div class="mb-4">
-                <label for="name" class="mb-2 block text-sm font-medium text-gray-700">Nama Layanan <span
+                <label for="name" class="mb-2 block text-sm font-medium text-gray-700">Nama Program <span
                         class="text-red-500">*</span></label>
                 <input type="text" name="name" id="name" value="{{ old('name', $service->name) }}"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('name') border-red-500 @enderror"
@@ -51,7 +51,8 @@
             </div>
 
             <div class="mb-4">
-                <label for="requirements" class="mb-2 block text-sm font-medium text-gray-700">Persyaratan</label>
+                <label for="requirements" class="mb-2 block text-sm font-medium text-gray-700">Target Peserta /
+                    Persyaratan</label>
                 <textarea name="requirements" id="requirements" rows="4"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('requirements') border-red-500 @enderror">{{ old('requirements', $service->requirements) }}</textarea>
                 @error('requirements')
@@ -60,7 +61,7 @@
             </div>
 
             <div class="mb-4">
-                <label for="procedure" class="mb-2 block text-sm font-medium text-gray-700">Prosedur</label>
+                <label for="procedure" class="mb-2 block text-sm font-medium text-gray-700">Alur Kegiatan</label>
                 <textarea name="procedure" id="procedure" rows="4"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('procedure') border-red-500 @enderror">{{ old('procedure', $service->procedure) }}</textarea>
                 @error('procedure')
@@ -69,9 +70,10 @@
             </div>
 
             <div class="mb-4">
-                <label for="processing_time" class="mb-2 block text-sm font-medium text-gray-700">Waktu Proses</label>
+                <label for="processing_time" class="mb-2 block text-sm font-medium text-gray-700">Jadwal Pelaksanaan</label>
                 <input type="text" name="processing_time" id="processing_time"
-                    value="{{ old('processing_time', $service->processing_time) }}" placeholder="Contoh: 3 hari kerja"
+                    value="{{ old('processing_time', $service->processing_time) }}"
+                    placeholder="Contoh: Setiap minggu ke-2 bulan berjalan"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('processing_time') border-red-500 @enderror">
                 @error('processing_time')
                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
@@ -79,9 +81,9 @@
             </div>
 
             <div class="mb-4">
-                <label for="cost" class="mb-2 block text-sm font-medium text-gray-700">Biaya</label>
+                <label for="cost" class="mb-2 block text-sm font-medium text-gray-700">Penanggungjawab</label>
                 <input type="text" name="cost" id="cost" value="{{ old('cost', $service->cost) }}"
-                    placeholder="Contoh: Gratis atau Rp 10.000"
+                    placeholder="Contoh: Kadus / RT 01"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('cost') border-red-500 @enderror">
                 @error('cost')
                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>

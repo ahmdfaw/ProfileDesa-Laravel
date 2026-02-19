@@ -28,6 +28,7 @@ class OfficialController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'in:kadus,rw,rt'],
             'photo' => ['nullable', 'image', 'max:2048'],
             'phone' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
@@ -53,6 +54,7 @@ class OfficialController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'in:kadus,rw,rt'],
             'photo' => ['nullable', 'image', 'max:2048'],
             'phone' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],

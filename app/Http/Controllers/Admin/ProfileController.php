@@ -31,7 +31,10 @@ class ProfileController extends Controller
             'area' => ['nullable', 'string', 'max:255'],
             'population' => ['nullable', 'integer', 'min:0'],
             'districts' => ['nullable', 'integer', 'min:0'],
+            'total_rw' => ['nullable', 'integer', 'min:0'],
+            'total_rt' => ['nullable', 'integer', 'min:0'],
             'village_head' => ['nullable', 'string', 'max:255'],
+            'hamlet_head' => ['nullable', 'string', 'max:255'],
             'address' => ['nullable', 'string'],
             'phone' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255'],
@@ -47,6 +50,6 @@ class ProfileController extends Controller
 
         $profile->update($validated);
 
-        return redirect()->route('admin.profile.edit')->with('success', 'Profil desa berhasil diperbarui!');
+        return redirect()->route('admin.profile.edit')->with('success', 'Profil dusun berhasil diperbarui!');
     }
 }
