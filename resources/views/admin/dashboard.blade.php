@@ -9,7 +9,7 @@
     </div>
 
     <!-- Statistics Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <div class="bg-white rounded-lg shadow-md p-6">
             <div class="flex items-center justify-between">
                 <div>
@@ -43,21 +43,6 @@
         <div class="bg-white rounded-lg shadow-md p-6">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-gray-500 text-sm">Layanan</p>
-                    <p class="text-3xl font-bold text-gray-900">{{ $stats['services'] }}</p>
-                </div>
-                <div class="bg-yellow-100 rounded-full p-3">
-                    <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <div class="flex items-center justify-between">
-                <div>
                     <p class="text-gray-500 text-sm">Pesan Baru</p>
                     <p class="text-3xl font-bold text-gray-900">{{ $stats['contacts'] }}</p>
                 </div>
@@ -74,7 +59,7 @@
     <!-- Quick Links -->
     <div class="bg-white rounded-lg shadow-md p-6">
         <h2 class="text-xl font-bold text-gray-900 mb-4">Aksi Cepat</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
             <a href="{{ route('admin.news.create') }}"
                 class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-4 py-3 rounded-lg text-center transition duration-200">
                 + Tambah Berita
@@ -82,10 +67,6 @@
             <a href="{{ route('admin.officials.create') }}"
                 class="bg-green-50 hover:bg-green-100 text-green-700 px-4 py-3 rounded-lg text-center transition duration-200">
                 + Tambah Pemerintahan
-            </a>
-            <a href="{{ route('admin.services.create') }}"
-                class="bg-yellow-50 hover:bg-yellow-100 text-yellow-700 px-4 py-3 rounded-lg text-center transition duration-200">
-                + Tambah Layanan
             </a>
             <a href="{{ route('admin.galleries.create') }}"
                 class="bg-purple-50 hover:bg-purple-100 text-purple-700 px-4 py-3 rounded-lg text-center transition duration-200">
