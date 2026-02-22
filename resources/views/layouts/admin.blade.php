@@ -25,7 +25,7 @@
                         <a href="{{ route('admin.news.index') }}" class="block px-4 py-2 hover:bg-gray-700">Berita</a>
                         <a href="{{ route('admin.officials.index') }}"
                             class="block px-4 py-2 hover:bg-gray-700">Pemerintahan</a>
-                        <a href="{{ route('admin.services.index') }}" class="block px-4 py-2 hover:bg-gray-700">Program
+                        <a href="{{ route('admin.programs.index') }}" class="block px-4 py-2 hover:bg-gray-700">Program
                             Kegiatan</a>
                         <a href="{{ route('admin.galleries.index') }}" class="block px-4 py-2 hover:bg-gray-700">Galeri</a>
                         <a href="{{ route('admin.contacts.index') }}" class="block px-4 py-2 hover:bg-gray-700">Pesan</a>

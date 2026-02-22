@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Service;
+use App\Models\Program;
 use Illuminate\Database\Seeder;
 
-class ServiceSeeder extends Seeder
+class ProgramSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $services = [
+        $programs = [
             [
                 'name' => 'Posyandu Balita',
                 'description' => 'Kegiatan rutin posyandu untuk pemantauan tumbuh kembang balita dan ibu hamil',
@@ -42,8 +42,8 @@ class ServiceSeeder extends Seeder
             ],
         ];
 
-        foreach ($services as $service) {
-            Service::create($service);
+        foreach ($programs as $program) {
+            Program::create($program);
         }
     }
 }

@@ -5,7 +5,7 @@
 @section('content')
     <div class="mb-6 flex items-center justify-between">
         <h1 class="text-2xl font-bold text-gray-900">Kelola Program Kegiatan</h1>
-        <a href="{{ route('admin.services.create') }}" class="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+        <a href="{{ route('admin.programs.create') }}" class="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
             Tambah Program Baru
         </a>
     </div>
@@ -31,11 +31,11 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
-                @forelse ($services as $service)
+                @forelse ($programs as $program)
                     <tr>
                         <td class="whitespace-nowrap px-6 py-4">
-                            @if ($service->icon)
-                                <img src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->name }}"
+                            @if ($program->icon)
+                                <img src="{{ asset('storage/' . $program->icon) }}" alt="{{ $program->name }}"
                                     class="h-10 w-10 object-contain">
                             @else
                                 <div class="flex h-10 w-10 items-center justify-center bg-gray-100">
@@ -48,23 +48,23 @@
                             @endif
                         </td>
                         <td class="px-6 py-4">
-                            <div class="text-sm font-medium text-gray-900">{{ $service->name }}</div>
-                            <div class="text-sm text-gray-500">{{ Str::limit($service->description, 50) }}</div>
+                            <div class="text-sm font-medium text-gray-900">{{ $program->name }}</div>
+                            <div class="text-sm text-gray-500">{{ Str::limit($program->description, 50) }}</div>
                         </td>
                         <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                            {{ $service->processing_time ?? '-' }}
+                            {{ $program->processing_time ?? '-' }}
                         </td>
                         <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                            {{ $service->cost ?? '-' }}
+                            {{ $program->cost ?? '-' }}
                         </td>
                         <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                            {{ $service->order }}
+                            {{ $program->order }}
                         </td>
                         <td class="whitespace-nowrap px-6 py-4 text-sm font-medium">
                             <div class="flex space-x-2">
-                                <a href="{{ route('admin.services.edit', $service->id) }}"
+                                <a href="{{ route('admin.programs.edit', $program->id) }}"
                                     class="text-blue-600 hover:text-blue-900">Edit</a>
-                                <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST"
+                                <form action="{{ route('admin.programs.destroy', $program->id) }}" method="POST"
                                     onsubmit="return confirm('Apakah Anda yakin ingin menghapus program ini?')">
                                     @csrf
                                     @method('DELETE')
@@ -85,6 +85,6 @@
     </div>
 
     <div class="mt-4">
-        {{ $services->links() }}
+        {{ $programs->links() }}
     </div>
 @endsection

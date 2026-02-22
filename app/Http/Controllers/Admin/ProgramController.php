@@ -3,24 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
+use App\Models\Program;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
-class ServiceController extends Controller
+class ProgramController extends Controller
 {
     public function index(): View
     {
-        $services = Service::orderBy('order')->paginate(10);
+        $programs = Program::orderBy('order')->paginate(10);
 
-        return view('admin.services.index', compact('services'));
+        return view('admin.programs.index', compact('programs'));
     }
 
     public function create(): View
     {
-        return view('admin.services.create');
+        return view('admin.programs.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -37,20 +37,20 @@ class ServiceController extends Controller
         ]);
 
         if ($request->hasFile('icon')) {
-            $validated['icon'] = $request->file('icon')->store('services', 'public');
+            $validated['icon'] = $request->file('icon')->store('programs', 'public');
         }
 
-        Service::create($validated);
+        Program::create($validated);
 
-        return redirect()->route('admin.services.index')->with('success', 'Layanan berhasil ditambahkan!');
+        return redirect()->route('admin.programs.index')->with('success', 'Program kegiatan berhasil ditambahkan!');
     }
 
-    public function edit(Service $service): View
+    public function edit(Program $program): View
     {
-        return view('admin.services.edit', compact('service'));
+        return view('admin.programs.edit', compact('program'));
     }
 
-    public function update(Request $request, Service $service): RedirectResponse
+    public function update(Request $request, Program $program): RedirectResponse
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -64,25 +64,25 @@ class ServiceController extends Controller
         ]);
 
         if ($request->hasFile('icon')) {
-            if ($service->icon) {
-                Storage::disk('public')->delete($service->icon);
+            if ($program->icon) {
+                Storage::disk('public')->delete($program->icon);
             }
-            $validated['icon'] = $request->file('icon')->store('services', 'public');
+            $validated['icon'] = $request->file('icon')->store('programs', 'public');
         }
 
-        $service->update($validated);
+        $program->update($validated);
 
-        return redirect()->route('admin.services.index')->with('success', 'Layanan berhasil diperbarui!');
+        return redirect()->route('admin.programs.index')->with('success', 'Program kegiatan berhasil diperbarui!');
     }
 
-    public function destroy(Service $service): RedirectResponse
+    public function destroy(Program $program): RedirectResponse
     {
-        if ($service->icon) {
-            Storage::disk('public')->delete($service->icon);
+        if ($program->icon) {
+            Storage::disk('public')->delete($program->icon);
         }
 
-        $service->delete();
+        $program->delete();
 
-        return redirect()->route('admin.services.index')->with('success', 'Layanan berhasil dihapus!');
+        return redirect()->route('admin.programs.index')->with('success', 'Program kegiatan berhasil dihapus!');
     }
 }

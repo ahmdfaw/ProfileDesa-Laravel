@@ -8,7 +8,7 @@
     </div>
 
     <div class="rounded-lg bg-white p-6 shadow">
-        <form action="{{ route('admin.services.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.programs.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-4">
@@ -98,7 +98,7 @@
                 <button type="submit" class="rounded-lg bg-blue-600 px-6 py-2 text-white hover:bg-blue-700">
                     Simpan
                 </button>
-                <a href="{{ route('admin.services.index') }}"
+                <a href="{{ route('admin.programs.index') }}"
                     class="rounded-lg border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-50">
                     Batal
                 </a>

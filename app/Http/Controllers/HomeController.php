@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use App\Models\News;
-use App\Models\Service;
+use App\Models\Program;
 use App\Models\VillageProfile;
 use Illuminate\View\View;
 
@@ -17,9 +17,9 @@ class HomeController extends Controller
             ->orderBy('published_at', 'desc')
             ->limit(3)
             ->get();
-        $services = Service::orderBy('order')->limit(6)->get();
+        $programs = Program::orderBy('order')->limit(6)->get();
         $galleries = Gallery::orderBy('order')->limit(6)->get();
 
-        return view('home', compact('profile', 'latestNews', 'services', 'galleries'));
+        return view('home', compact('profile', 'latestNews', 'programs', 'galleries'));
     }
 }

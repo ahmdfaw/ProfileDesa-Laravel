@@ -8,14 +8,14 @@
     </div>
 
     <div class="rounded-lg bg-white p-6 shadow">
-        <form action="{{ route('admin.services.update', $service->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.programs.update', $program->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="mb-4">
                 <label for="name" class="mb-2 block text-sm font-medium text-gray-700">Nama Program <span
                         class="text-red-500">*</span></label>
-                <input type="text" name="name" id="name" value="{{ old('name', $service->name) }}"
+                <input type="text" name="name" id="name" value="{{ old('name', $program->name) }}"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('name') border-red-500 @enderror"
                     required>
                 @error('name')
@@ -28,7 +28,7 @@
                         class="text-red-500">*</span></label>
                 <textarea name="description" id="description" rows="3"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('description') border-red-500 @enderror"
-                    required>{{ old('description', $service->description) }}</textarea>
+                    required>{{ old('description', $program->description) }}</textarea>
                 @error('description')
                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                 @enderror
@@ -36,9 +36,9 @@
 
             <div class="mb-4">
                 <label for="icon" class="mb-2 block text-sm font-medium text-gray-700">Icon</label>
-                @if ($service->icon)
+                @if ($program->icon)
                     <div class="mb-2">
-                        <img src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->name }}"
+                        <img src="{{ asset('storage/' . $program->icon) }}" alt="{{ $program->name }}"
                             class="h-16 w-16 object-contain">
                     </div>
                 @endif
@@ -54,7 +54,7 @@
                 <label for="requirements" class="mb-2 block text-sm font-medium text-gray-700">Target Peserta /
                     Persyaratan</label>
                 <textarea name="requirements" id="requirements" rows="4"
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('requirements') border-red-500 @enderror">{{ old('requirements', $service->requirements) }}</textarea>
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('requirements') border-red-500 @enderror">{{ old('requirements', $program->requirements) }}</textarea>
                 @error('requirements')
                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                 @enderror
@@ -63,7 +63,7 @@
             <div class="mb-4">
                 <label for="procedure" class="mb-2 block text-sm font-medium text-gray-700">Alur Kegiatan</label>
                 <textarea name="procedure" id="procedure" rows="4"
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('procedure') border-red-500 @enderror">{{ old('procedure', $service->procedure) }}</textarea>
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('procedure') border-red-500 @enderror">{{ old('procedure', $program->procedure) }}</textarea>
                 @error('procedure')
                     <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                 @enderror
@@ -72,7 +72,7 @@
             <div class="mb-4">
                 <label for="processing_time" class="mb-2 block text-sm font-medium text-gray-700">Jadwal Pelaksanaan</label>
                 <input type="text" name="processing_time" id="processing_time"
-                    value="{{ old('processing_time', $service->processing_time) }}"
+                    value="{{ old('processing_time', $program->processing_time) }}"
                     placeholder="Contoh: Setiap minggu ke-2 bulan berjalan"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('processing_time') border-red-500 @enderror">
                 @error('processing_time')
@@ -82,7 +82,7 @@
 
             <div class="mb-4">
                 <label for="cost" class="mb-2 block text-sm font-medium text-gray-700">Penanggungjawab</label>
-                <input type="text" name="cost" id="cost" value="{{ old('cost', $service->cost) }}"
+                <input type="text" name="cost" id="cost" value="{{ old('cost', $program->cost) }}"
                     placeholder="Contoh: Kadus / RT 01"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('cost') border-red-500 @enderror">
                 @error('cost')
@@ -93,7 +93,7 @@
             <div class="mb-6">
                 <label for="order" class="mb-2 block text-sm font-medium text-gray-700">Urutan <span
                         class="text-red-500">*</span></label>
-                <input type="number" name="order" id="order" value="{{ old('order', $service->order) }}"
+                <input type="number" name="order" id="order" value="{{ old('order', $program->order) }}"
                     min="0"
                     class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:ring-blue-500 @error('order') border-red-500 @enderror"
                     required>
@@ -107,7 +107,7 @@
                 <button type="submit" class="rounded-lg bg-blue-600 px-6 py-2 text-white hover:bg-blue-700">
                     Update
                 </button>
-                <a href="{{ route('admin.services.index') }}"
+                <a href="{{ route('admin.programs.index') }}"
                     class="rounded-lg border border-gray-300 px-6 py-2 text-gray-700 hover:bg-gray-50">
                     Batal
                 </a>

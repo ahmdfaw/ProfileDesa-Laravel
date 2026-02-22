@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $service->name)
+@section('title', $program->name)
 
 @section('content')
     <!-- Breadcrumb -->
@@ -11,18 +11,18 @@
                 <span class="mx-2 text-gray-500">/</span>
                 <a href="{{ route('programs.index') }}" class="text-blue-600 hover:text-blue-800">Program Kegiatan</a>
                 <span class="mx-2 text-gray-500">/</span>
-                <span class="text-gray-500">{{ $service->name }}</span>
+                <span class="text-gray-500">{{ $program->name }}</span>
             </nav>
         </div>
     </div>
 
-    <!-- Service Content -->
+    <!-- Program Content -->
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <!-- Header -->
             <div class="bg-blue-600 text-white p-8 flex items-center">
-                @if ($service->icon)
-                    <img src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->name }}" class="w-20 h-20 mr-6">
+                @if ($program->icon)
+                    <img src="{{ asset('storage/' . $program->icon) }}" alt="{{ $program->name }}" class="w-20 h-20 mr-6">
                 @else
                     <svg class="w-20 h-20 mr-6" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
@@ -31,8 +31,8 @@
                     </svg>
                 @endif
                 <div>
-                    <h1 class="text-3xl font-bold">{{ $service->name }}</h1>
-                    <p class="text-blue-100 mt-2">{{ $service->description }}</p>
+                    <h1 class="text-3xl font-bold">{{ $program->name }}</h1>
+                    <p class="text-blue-100 mt-2">{{ $program->description }}</p>
                 </div>
             </div>
 
@@ -40,7 +40,7 @@
             <div class="p-8 space-y-6">
                 <!-- Processing Time & Cost -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @if ($service->processing_time)
+                    @if ($program->processing_time)
                         <div class="bg-blue-50 p-4 rounded-lg">
                             <div class="flex items-center text-blue-900 mb-2">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,11 +49,11 @@
                                 </svg>
                                 <span class="font-semibold">Jadwal Pelaksanaan</span>
                             </div>
-                            <p class="text-gray-700">{{ $service->processing_time }}</p>
+                            <p class="text-gray-700">{{ $program->processing_time }}</p>
                         </div>
                     @endif
 
-                    @if ($service->cost)
+                    @if ($program->cost)
                         <div class="bg-green-50 p-4 rounded-lg">
                             <div class="flex items-center text-green-900 mb-2">
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,13 +62,13 @@
                                 </svg>
                                 <span class="font-semibold">Penanggungjawab</span>
                             </div>
-                            <p class="text-gray-700">{{ $service->cost }}</p>
+                            <p class="text-gray-700">{{ $program->cost }}</p>
                         </div>
                     @endif
                 </div>
 
                 <!-- Requirements -->
-                @if ($service->requirements)
+                @if ($program->requirements)
                     <div>
                         <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
                             <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor"
@@ -79,13 +79,13 @@
                             Persyaratan / Target Peserta
                         </h2>
                         <div class="bg-gray-50 p-4 rounded-lg">
-                            <p class="text-gray-700 whitespace-pre-line">{{ $service->requirements }}</p>
+                            <p class="text-gray-700 whitespace-pre-line">{{ $program->requirements }}</p>
                         </div>
                     </div>
                 @endif
 
                 <!-- Procedure -->
-                @if ($service->procedure)
+                @if ($program->procedure)
                     <div>
                         <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
                             <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor"
@@ -96,7 +96,7 @@
                             Alur Kegiatan
                         </h2>
                         <div class="bg-gray-50 p-4 rounded-lg">
-                            <p class="text-gray-700 whitespace-pre-line">{{ $service->procedure }}</p>
+                            <p class="text-gray-700 whitespace-pre-line">{{ $program->procedure }}</p>
                         </div>
                     </div>
                 @endif

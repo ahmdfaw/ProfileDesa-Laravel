@@ -47,7 +47,7 @@
     @endif
 
     <!-- Services -->
-    @if ($services->count() > 0)
+    @if ($programs->count() > 0)
         <div class="bg-gray-100 py-12">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center mb-6">
@@ -55,11 +55,11 @@
                     <a href="{{ route('programs.index') }}" class="text-blue-600 hover:text-blue-800">Lihat Semua</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    @foreach ($services as $service)
+                    @foreach ($programs as $program)
                         <div class="bg-white p-6 rounded-lg shadow-md">
-                            <h3 class="text-xl font-semibold mb-2">{{ $service->name }}</h3>
-                            <p class="text-gray-600 mb-4">{{ Str::limit($service->description, 100) }}</p>
-                            <a href="{{ route('programs.show', $service->id) }}"
+                            <h3 class="text-xl font-semibold mb-2">{{ $program->name }}</h3>
+                            <p class="text-gray-600 mb-4">{{ Str::limit($program->description, 100) }}</p>
+                            <a href="{{ route('programs.show', $program->id) }}"
                                 class="text-blue-600 hover:text-blue-800">Selengkapnya →</a>
                         </div>
                     @endforeach
