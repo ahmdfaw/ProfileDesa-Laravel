@@ -31,6 +31,17 @@
                         <a href="{{ route('admin.contacts.index') }}" class="block px-4 py-2 hover:bg-gray-700">Pesan</a>
                         <a href="{{ route('admin.profile.edit') }}" class="block px-4 py-2 hover:bg-gray-700">Profil
                             Dusun</a>
+                        <div class="mt-2 border-t border-gray-700 pt-2">
+                            <p class="px-4 py-1 text-xs font-semibold uppercase tracking-wider text-gray-400">PAM</p>
+                            <a href="{{ route('admin.pam.pelanggan.index') }}"
+                                class="block px-4 py-2 hover:bg-gray-700">Pelanggan</a>
+                            <a href="{{ route('admin.pam.tagihan.index') }}"
+                                class="block px-4 py-2 hover:bg-gray-700">Tagihan</a>
+                            <a href="{{ route('admin.pam.keuangan.index') }}"
+                                class="block px-4 py-2 hover:bg-gray-700">Keuangan</a>
+                            <a href="{{ route('admin.pam.laporan.index') }}"
+                                class="block px-4 py-2 hover:bg-gray-700">Laporan</a>
+                        </div>
                         <form method="POST" action="{{ route('admin.logout') }}" class="px-4 py-2">
                             @csrf
                             <button type="submit" class="w-full text-left hover:text-red-400">Logout</button>

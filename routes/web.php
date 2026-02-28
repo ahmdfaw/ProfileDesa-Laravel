@@ -6,12 +6,17 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\OfficialController as AdminOfficialController;
+use App\Http\Controllers\Admin\PamKeuanganController;
+use App\Http\Controllers\Admin\PamLaporanController;
+use App\Http\Controllers\Admin\PamPelangganController;
+use App\Http\Controllers\Admin\PamTagihanController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PamController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +30,7 @@ Route::get('/program', [ProgramController::class, 'index'])->name('programs.inde
 Route::get('/program/{id}', [ProgramController::class, 'show'])->name('programs.show');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/kontak', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/pam', [PamController::class, 'index'])->name('pam.index');
 
 Route::prefix('admin')->name('admin.')->group(function (): void {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -45,5 +51,17 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
 
         Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');
         Route::put('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
+
+        Route::prefix('pam')->name('pam.')->group(function (): void {
+            Route::resource('pelanggan', PamPelangganController::class)
+                ->parameters(['pelanggan' => 'pamPelanggan']);
+            Route::resource('tagihan', PamTagihanController::class)
+                ->parameters(['tagihan' => 'pamTagihan']);
+            Route::patch('/tagihan/{pamTagihan}/tandai-lunas', [PamTagihanController::class, 'tandaiLunas'])->name('tagihan.tandai-lunas');
+            Route::get('/tagihan/{pamTagihan}/cetak', [PamTagihanController::class, 'cetak'])->name('tagihan.cetak');
+            Route::resource('keuangan', PamKeuanganController::class)
+                ->parameters(['keuangan' => 'pamKeuangan']);
+            Route::get('/laporan', [PamLaporanController::class, 'index'])->name('laporan.index');
+        });
     });
 });
